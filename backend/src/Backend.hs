@@ -5,8 +5,12 @@
 {-# LANGUAGE TypeFamilies #-}
 module Backend where
 
-import Common.Route
 import Obelisk.Backend
+
+import Common.Route
+import Common.Types ()
+
+import Backend.Store ()
 
 backend :: Backend BackendRoute FrontendRoute
 backend = Backend

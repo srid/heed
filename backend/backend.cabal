@@ -8,6 +8,8 @@ library
   if impl(ghcjs)
     buildable: False
   build-depends: base
+               , beam-core
+               , beam-postgres
                , common
                , frontend
                , obelisk-backend
@@ -22,6 +24,8 @@ executable backend
   if impl(ghcjs)
     buildable: False
   build-depends: base
+               , beam-core
+               , beam-postgres
                , backend
                , common
                , frontend

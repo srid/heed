@@ -20,7 +20,7 @@ project ./. ({ pkgs, hackGet, ... }: {
     };
     beam-core = beam + /beam-core;
     beam-migrate = beam + /beam-migrate;
-    beam-sqlite = beam + /beam-sqlite;
+    beam-postgres = beam + /beam-postgres;
     obelisk-oauth-common = obelisk-oauth + /common;
     obelisk-oauth-backend = obelisk-oauth + /backend;
   };
@@ -30,6 +30,6 @@ project ./. ({ pkgs, hackGet, ... }: {
     clay = dontCheck super.clay;
     beam-core = dontCheck super.beam-core;
     beam-migrate = dontCheck super.beam-migrate;
-    beam-sqlite = dontCheck super.beam-sqlite;
+    beam-postgres = dontCheck super.beam-postgres;
   };
 })
