@@ -14,3 +14,11 @@ pay attention to; take notice of.
 - Realize patterns.
 - ...
 - Become free!
+
+## Local development
+
+Create a postgres database named `heeddev` and:
+
+```
+psql heeddev < schema.sql
+```
