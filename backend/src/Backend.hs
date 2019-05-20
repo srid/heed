@@ -10,10 +10,12 @@ import Obelisk.Backend
 import Common.Route
 import Common.Types ()
 
-import Backend.Store ()
+import Backend.Store
 
 backend :: Backend BackendRoute FrontendRoute
 backend = Backend
-  { _backend_run = \serve -> serve $ const $ return ()
+  { _backend_run = \serve -> do
+      demo
+      serve $ const $ return ()
   , _backend_routeEncoder = backendRouteEncoder
   }

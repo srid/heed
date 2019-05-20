@@ -3,13 +3,12 @@
 {-# LANGUAGE TypeApplications #-}
 module Frontend where
 
-import qualified Data.Text as T
-import Obelisk.Frontend
-import Obelisk.Route
 import Reflex.Dom.Core
 
-import Common.Route
+import Obelisk.Frontend
+import Obelisk.Route
 
+import Common.Route
 
 frontend :: Frontend (R FrontendRoute)
 frontend = Frontend

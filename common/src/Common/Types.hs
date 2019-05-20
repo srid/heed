@@ -16,7 +16,7 @@ import Data.Time.Clock
 import Database.Beam
 
 data NoteT f = Note
-  { _noteTime :: Columnar f UTCTime
+  { _noteCreatedAt :: Columnar f UTCTime
   , _noteContent :: Columnar f Text
   }
   deriving Generic
@@ -30,4 +30,4 @@ instance Beamable NoteT
 
 instance Table NoteT where
  data PrimaryKey NoteT f = NoteId (Columnar f UTCTime) deriving (Generic, Beamable)
- primaryKey = NoteId . _noteTime
+ primaryKey = NoteId . _noteCreatedAt
