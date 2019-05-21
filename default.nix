@@ -1,7 +1,10 @@
 { system ? builtins.currentSystem # TODO: Get rid of this system cruft
 , iosSdkVersion ? "10.2"
 }:
-with import ./.obelisk/impl { inherit system iosSdkVersion; };
+with import ./.obelisk/impl {
+  inherit system iosSdkVersion;
+  config.android_sdk.accept_license = true;
+};
 project ./. ({ pkgs, hackGet, ... }: {
   android.applicationId = "ca.srid.heed";
   android.displayName = "Heed";
