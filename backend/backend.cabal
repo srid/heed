@@ -16,6 +16,7 @@ library
                , obelisk-route
   exposed-modules:
     Backend
+    Backend.Store
   ghc-options: -Wall
 
 executable backend
