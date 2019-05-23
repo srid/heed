@@ -12,6 +12,9 @@ library
                , beam-postgres
                , common
                , frontend
+               , gargoyle
+               , gargoyle-postgresql-nix
+               , postgresql-simple
                , obelisk-backend
                , obelisk-route
   exposed-modules:
@@ -30,4 +33,7 @@ executable backend
                , backend
                , common
                , frontend
+               , gargoyle
+               , gargoyle-postgresql-nix
+               , postgresql-simple
                , obelisk-backend
