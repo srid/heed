@@ -13,8 +13,13 @@
 
 module Backend.Store where
 
+import Database.PostgreSQL.Simple (Query, execute_)
+
 import Database.Beam
 import Database.Beam.Postgres
+
+import Gargoyle (withGargoyle)
+import Gargoyle.PostgreSQL.Nix (postgresNix)
 
 import Common.Types
 
@@ -26,11 +31,15 @@ data HeedDb f = HeedDb
 heedDb :: DatabaseSettings be HeedDb
 heedDb = defaultDbSettings
 
+schema :: Query
+schema = "CREATE TABLE IF NOT EXISTS notes (created_at TIMESTAMPTZ NOT NULL, content VARCHAR NOT NULL);"
+
 demo :: IO ()
 demo = do
-  -- TODO: Put connection string in backend config file.
-  conn <- connectPostgreSQL "postgresql://nixcloud:nixcloud@localhost/heeddev"
-  putStrLn "Querying DB for test"
-  runBeamPostgresDebug putStrLn conn $ do
-    notes <- runSelectReturningList $ select $ all_ (_heedNotes heedDb)
-    mapM_ (liftIO . putStrLn . show) notes
+  g <- postgresNix
+  withGargoyle g "db" $ \uri -> do
+    conn <- connectPostgreSQL uri
+    _ <- execute_ conn schema
+    runBeamPostgresDebug putStrLn conn $ do
+      notes <- runSelectReturningList $ select $ all_ (_heedNotes heedDb)
+      mapM_ (liftIO . putStrLn . show) notes

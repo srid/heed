@@ -17,8 +17,6 @@ pay attention to; take notice of.
 
 ## Local development
 
-Create a postgres database named `heeddev` and:
-
 ```
-psql heeddev < schema.sql
+ob run
 ```
